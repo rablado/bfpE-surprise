@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<title>For You</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="sky"></div>
+
+<!-- Envelope intro -->
+
+<div id="envelopeContainer">
+
+<div id="envelope" onclick="openEnvelope()">
+
+<div class="flap"></div>
+
+<div class="body"></div>
+
+<p class="envelopeText">Open Me</p>
+
+</div>
+
+</div>
+
+
+<!-- Letter window -->
+
+<div id="letterWindow">
+
+<h1>For You, Dearest Nehan</h1>
+
+<div id="story"></div>
+
+<button id="continueBtn" onclick="nextPage()">
+<img src="images/continue.png" alt="continue">
+</button>
+
+<div id="choiceArea">
+<button id="yesBtn" onclick="yesClicked()">Yes</button>
+<button id="noBtn" onmouseover="noHover()">No</button>
+</div>
+
+</div>
+
+<audio id="bgMusic" loop>
+<source src="images/background-music.mp3" type="audio/mpeg">
+</audio>
+
+<script src="js/script.js"></script>
+
+</body>
+
+</html>
