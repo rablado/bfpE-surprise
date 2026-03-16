@@ -1,0 +1,335 @@
+body{
+
+margin:0;
+height:100vh;
+overflow:hidden;
+
+background:linear-gradient(
+to bottom,
+#1c1435,
+#4a3e8a,
+#b9c7ff
+);
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+font-family:'Roboto',sans-serif;
+
+cursor:url("../images/cursor.png") 16 16, auto;
+
+}
+
+#story{
+
+font-family:'Cormorant Garamond', serif;
+
+font-size:1.35em;
+
+line-height:1.4em;
+
+letter-spacing:0.5px;
+
+margin: 4px 0;
+
+}
+/* star sky */
+
+#sky{
+
+position:absolute;
+width:100%;
+height:100%;
+overflow:hidden;
+
+}
+
+
+/* falling stars */
+
+.star{
+
+position:absolute;
+
+width:3px;
+height:3px;
+
+background:white;
+
+border-radius:50%;
+
+box-shadow:0 0 8px white;
+
+animation:fall linear infinite;
+
+}
+
+@keyframes fall{
+
+0%{
+transform:translateY(-10vh);
+opacity:1;
+}
+
+100%{
+transform:translateY(110vh);
+opacity:0;
+}
+
+}
+
+
+/* shooting star */
+
+setInterval(()=>{
+    let s = document.createElement("div");
+    s.className = "shooting";
+    
+    // start top-right corner
+    s.style.top = "0px";
+    s.style.left = "100vw"; 
+	s.style.transform = "rotate(45deg)";
+    
+    document.getElementById("sky").appendChild(s);
+    
+    // animate diagonal to bottom-left
+    s.animate([
+        { transform: "translate(0,0)", opacity: 1 },
+        { transform: "translate(-100vw, 100vh)", opacity: 0 }
+    ], {
+        duration: 1500,
+        easing: "linear"
+    });
+    
+    // remove after animation
+    setTimeout(()=>{s.remove()}, 1500);
+}, 7000); // every 7 seconds
+
+
+/* envelope */
+
+#envelopeContainer{
+
+position:absolute;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+}
+
+#envelope{
+
+width:220px;
+height:140px;
+
+position:relative;
+
+cursor:pointer;
+
+}
+
+#envelope .body{
+
+position:absolute;
+width:100%;
+height:100%;
+
+background:#f2eaff;
+
+border-radius:6px;
+
+}
+
+#envelope .flap{
+
+position:absolute;
+top:0;
+
+width:100%;
+height:100%;
+
+background:#e2d6ff;
+
+clip-path:polygon(0 0,100% 0,50% 60%);
+
+transform-origin:top;
+
+transition:transform 1s;
+
+}
+
+.envelopeText{
+
+position:absolute;
+
+width:100%;
+
+text-align:center;
+
+top:50%;
+
+transform:translateY(-50%);
+
+font-family:'Great Vibes';
+
+font-size:28px;
+
+color:#5a4a8a;
+
+}
+
+
+/* letter window */
+
+#letterWindow{
+    display:none;
+    width:520px;
+    height:420px;
+    background: rgba(230,220,255,0.9);
+    color:#3b2e5a;
+    border-radius:20px;
+    padding:35px;
+    text-align:center;
+    box-shadow:0 10px 40px rgba(0,0,0,0.4);
+    position: relative;  /* important */
+}
+
+h1{
+
+font-family:'Great Vibes';
+font-size:3em;
+
+}
+
+
+/* continue */
+
+#continueBtn{
+    background:none;
+    border:none;
+    cursor:pointer;
+    margin-top:20px;
+    z-index:10;        /* ensure it's on top */
+    position: relative; /* make z-index effective */
+}
+
+#continueBtn img{
+    width:90px;
+    transition: transform 0.3s;
+}
+
+#continueBtn img:hover{
+    transform: scale(1.15);
+}
+
+/* choices */
+
+#choiceArea{
+
+margin-top:25px;
+
+display:none;
+
+}
+
+#yesBtn,#noBtn{
+
+padding:12px 28px;
+
+font-size:1.3em;
+
+border:none;
+
+border-radius:40px;
+
+font-family:'Great Vibes';
+
+cursor:pointer;
+
+margin:0 30px;
+
+}
+
+
+/* glowing yes */
+
+#yesBtn{
+
+    background: #ffffff;   /* luminous white */
+    color: #333;
+
+animation:glow 2s infinite;
+
+}
+
+@keyframes glow{
+
+0%{box-shadow:0 0 5px #89f0ff}
+50%{box-shadow:0 0 25px #89f0ff}
+100%{box-shadow:0 0 5px #89f0ff}
+
+}
+
+#noBtn{
+
+    background: #0d1b3d;   /* midnight blue */
+    color: #ffffff;
+
+}
+
+
+/* cursor particles */
+
+.particle{
+
+position:absolute;
+
+width:5px;
+height:5px;
+
+border-radius:50%;
+
+background:white;
+
+pointer-events:none;
+
+animation:fade 1s forwards;
+
+}
+
+@keyframes fade{
+
+to{
+opacity:0;
+transform:scale(2);
+}
+
+}
+
+
+/* hearts */
+
+.heart{
+
+position:absolute;
+
+color:#ff4fa3;
+
+font-size:22px;
+
+animation:explode 1.5s forwards;
+
+}
+
+@keyframes explode{
+
+to{
+
+transform:translateY(-200px) scale(2);
+
+opacity:0;
+
+}
+
